@@ -26,23 +26,17 @@ object Repository {
 
     val formattedUserNames: List<String>
         get() {
-            val userNames = ArrayList<String>(users.size)
-
-            for((firstname, lastname) in users){
-
-                /**
-                 * In Kotlin, if and when statement ar expressions - they return a value
-                 */
-                val name: String = if(lastname != null) {
-                    if(firstname != null) {
-                        "$firstname $lastname"
+            return users.map { user ->
+                if (user.lastName != null) {
+                    if (user.firstName != null) {
+                        "${user.firstName} ${user.lastName}"
                     } else {
-                        lastname
+                        user.lastName ?: "Unknown"
                     }
-                } else firstname ?: "Unknown"
-                userNames.add(name)
+                }  else {
+                    user.firstName ?: "Unknown"
+                }
             }
-            return userNames
         }
 
     /**
