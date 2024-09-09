@@ -7,36 +7,37 @@ import java.util.*
  * to 'object'
  */
 object Repository {
-    private var users: MutableList<User>? = null
+    private val users = mutableListOf<User>()
 
     // keeping the constructor private to enforce the usage of getInstance
     init {
         val user1 = User("Jane", "")
         val user2 = User("John", null)
         val user3 = User("Anne", "Doe")
-        users = ArrayList<Any?>()
+        
         users.add(user1)
         users.add(user2)
         users.add(user3)
     }
 
-    fun getUsers(): List<User?>? {
+    fun getUsers(): List<User?> {
         return users
     }
 
     val formattedUserNames: List<String?>
         get() {
-            val userNames: MutableList<String?> = ArrayList(users!!.size)
-            for (user in users) {
+            val userNames = ArrayList<String>(users.size)
+
+            for((firstname, lastname) in users){
                 var name: String
-                name = if (user!!.lastName != null) {
-                    if (user!!.firstName != null) {
-                        user!!.firstName + " " + user!!.lastName
+                name = if(lastname != null) {
+                    if(firstname != null) {
+                        firstname + " " + lastname
                     } else {
-                        user!!.lastName
+                        lastname
                     }
-                } else if (user!!.firstName != null) {
-                    user!!.firstName
+                } else if(firstname != null) {
+                    firstname
                 } else {
                     "Unknown"
                 }
