@@ -29,18 +29,18 @@ object Repository {
             val userNames = ArrayList<String>(users.size)
 
             for((firstname, lastname) in users){
-                var name: String
+                val name: String
+
+                /**
+                 * In Kotlin, if and when statement ar expressions - they return a value
+                 */
                 name = if(lastname != null) {
                     if(firstname != null) {
                         firstname + " " + lastname
                     } else {
                         lastname
                     }
-                } else if(firstname != null) {
-                    firstname
-                } else {
-                    "Unknown"
-                }
+                } else firstname ?: "Unknown"
                 userNames.add(name)
             }
             return userNames
