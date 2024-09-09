@@ -22,16 +22,7 @@ object Repository {
 
     val formattedUserNames: List<String>
         get() {
-            return _users.map { user ->
-                if (user.lastName != null) {
-                    if (user.firstName != null) {
-                        "${user.firstName} ${user.lastName}"
-                    } else {
-                        user.lastName ?: "Unknown"
-                    }
-                } else {
-                    user.firstName ?: "Unknown"
-                }
+            return _users.map { user -> user.userFormattedName
             }
         }
 

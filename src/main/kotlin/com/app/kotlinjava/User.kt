@@ -12,7 +12,50 @@ package com.app.kotlinjava
  * val jane = User(lastName = "Doe") // same as User(null, "Doe")
  * val john = User("John", "Doe")
  */
+
 data class User(var firstName: String?, var lastName: String? = null) // sample of primary constructor
+
+
+/**
+ * In Java, whenever you need some utility functionality, you would most likely create a Util class and declare that
+ * functionality as a static function.
+ *
+ * In Kotlin you can declare top-level functions, without having a class.
+ * However, Kotlin also provides the ability to create extension functions.
+ * These are functions that extend a certain type but are declared outside of the type.
+ */
+
+// extension function
+fun User.getFormattedName(): String {
+    return if (lastName != null) {
+        if (firstName != null) {
+            "$firstName $lastName"
+        } else {
+            lastName ?: "Unknown"
+        }
+    } else {
+        firstName ?: "Unknown"
+    }
+}
+
+// extension property
+val User.userFormattedName: String
+    get() {
+        return if (lastName != null) {
+            if (firstName != null) {
+                "$firstName $lastName"
+            } else {
+                lastName ?: "Unknown"
+            }
+        } else {
+            firstName ?: "Unknown"
+        }
+    }
+
+// usage:
+val user = User("Jane", "Doe")
+val name = user.getFormattedName()
+val formattedName = user.userFormattedName
 
 fun main() {
     val user1 = User("Jane", "Doe") // declaring instance of class
