@@ -1,5 +1,9 @@
 # Nullability
 
+### Why is Nullability important?
+- billion dollar mistake,
+- because null exceptions are ubiquitous, attempts to dereference null pinters
+
 ### Objectives
 - Distinguish nullable types and non-nullable types 
 - Use different ways to perform an action only when a value of a nullable type is not null 
