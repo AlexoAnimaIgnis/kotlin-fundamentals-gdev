@@ -9,6 +9,25 @@ fun main() {
         Hero("First Mate", 29, Gender.MALE),
         Hero("Sir Stephen", 37, Gender.MALE)
     )
+
+    // map = transform elements from one type to another
+    // any = checks at least one elements that satisfy the predicate (all, none)
+    // find = find element that satisfy the given predicate
+    // first or firstOrNull
+    // count
+
+
+    // groupBy
+    // associateBy = removes duplicate
+    // associate = build map based on a list
+    // zip
+    // zipWithNext
+    // flatten
+    // flatMap = combines flat and map
+}
+
+fun commOperations1(heroes: List<Hero>) {
+
     println("heroes.first().name Result: ${heroes.first().name}")
     println("heroes.firstOrNull().name Result: ${heroes.firstOrNull()?.name}")
     println("heroes.last().name Result: ${heroes.last().name}")
@@ -40,19 +59,4 @@ fun main() {
 
     // any -> we check if any heroes is FEMALE
     println("predicate ALL  Result: ${heroes.any { it.gender == Gender.FEMALE }}")
-
-    // map = transform elements from one type to another
-    // any = checks at least one elements that satisfy the predicate (all, none)
-    // find = find element that satisfy the given predicate
-    // first or firstOrNull
-    // count
-
-
-    // groupBy
-    // associateBy = removes duplicate
-    // associate = build map based on a list
-    // zip
-    // zipWithNext
-    // flatten
-    // flatMap = combines flat and map
 }
