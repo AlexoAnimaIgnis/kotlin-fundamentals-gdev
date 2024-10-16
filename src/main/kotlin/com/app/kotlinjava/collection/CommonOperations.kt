@@ -10,20 +10,40 @@ fun main() {
         Hero("Sir Stephen", 37, Gender.MALE)
     )
 
-    // map = transform elements from one type to another
-    // any = checks at least one elements that satisfy the predicate (all, none)
-    // find = find element that satisfy the given predicate
-    // first or firstOrNull
-    // count
+    commOperations1(heroes)
+    commOperations2(heroes)
 
+}
 
-    // groupBy
-    // associateBy = removes duplicate
-    // associate = build map based on a list
-    // zip
-    // zipWithNext
-    // flatten
-    // flatMap = combines flat and map
+fun commOperations2(heroes: List<Hero>) {
+
+    // group by
+    val mapByAge = heroes.groupBy { it.age }
+    println("heroes.groupBy { it.age } Result: $mapByAge")
+    val (age, group) = mapByAge.maxBy { (_, group) -> group.size }
+    println("age is $age")
+
+    // associate by
+    val mapByName = heroes.associateBy { it.name }
+    println("associateBy name is $mapByName")
+    println("Frency age name is ${mapByName["Frenchy"]?.age}")
+
+    // get or else
+    val unknownHero = Hero("Unknown", 0, null)
+
+    println("getOrElse name is ${
+        mapByName.getOrElse("unknown") { unknownHero }.age
+    }")
+
+    // flatmap
+    val allPossiblePairs = heroes
+        .flatMap { first ->
+            heroes.map { second -> first to second }
+        }
+    allPossiblePairs.forEach(::println)
+    val (first, second) = allPossiblePairs
+        .maxBy { it.first.age - it.second.age }
+    println("flatmap result: ${first.name}")
 }
 
 fun commOperations1(heroes: List<Hero>) {
